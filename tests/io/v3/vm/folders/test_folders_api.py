@@ -1,6 +1,7 @@
+import pytest
 import responses
 from requests import Response
-
+from marshmallow.exceptions import ValidationError
 from tenable.io.v3.base.iterators.explore_iterator import (CSVChunkIterator,
                                                            SearchIterator)
 
@@ -135,3 +136,16 @@ def test_search(api):
         return_resp=True
     )
     assert isinstance(resp, Response)
+
+
+@pytest.mark.vcr()
+def test_folder_name_typeerror(api):
+    '''test to raise the exception when type of folder_name is not as defined'''
+    with pytest.raises(ValidationError):
+        api.v3.vm.folders.create(1)
+
+
+def test_folder_edit_name_typeerror(api):
+    '''test to raise the exception when type of name is not as defined'''
+    with pytest.raises(ValidationError):
+        api.v3.vm.folders.edit(SAMPLE_FOLDER_ID, 00)
