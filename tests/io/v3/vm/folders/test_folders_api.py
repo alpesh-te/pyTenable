@@ -138,7 +138,6 @@ def test_search(api):
     assert isinstance(resp, Response)
 
 
-@pytest.mark.vcr()
 def test_folder_name_typeerror(api):
     '''test to raise the exception when type of folder_name is not as defined'''
     with pytest.raises(ValidationError):
