@@ -60,7 +60,7 @@ def test_scan_create_scan_document_template_unexpected_value_error(api):
 
 
 @pytest.mark.vcr()
-def test_scan_create_scan_socument_template_pass(api):
+def test_scan_create_scan_document_template_pass(api):
     '''
     test to create scan document basic template
     '''
