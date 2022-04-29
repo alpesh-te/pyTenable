@@ -19,11 +19,13 @@ from requests import Response
 from tenable.io.v3.base.endpoints.explore import ExploreBaseEndpoint
 from tenable.io.v3.base.iterators.was_iterator import (CSVChunkIterator,
                                                        SearchIterator)
+from tenable.io.v3.was.folders.schema import FolderSchema
 
 
 class FoldersAPI(ExploreBaseEndpoint):
     _path = 'api/v3/was/folders'
     _conv_json = True
+    _schema = FolderSchema()
 
     def create(self, name: str) -> Dict:
         '''
@@ -41,7 +43,8 @@ class FoldersAPI(ExploreBaseEndpoint):
         Examples:
             >>> folder = tio.v3.was.folders.create('New Folder Name')
         '''
-        return self._post(json={'name': name})
+        payload = self._schema.dump(self._schema.load({'name': name}))
+        return self._post(json=payload)
 
     def delete(self, id: UUID) -> None:
         '''
@@ -78,7 +81,8 @@ class FoldersAPI(ExploreBaseEndpoint):
             >>> tio.v3.was.folders.edit('91843ecb-ecb8-48a3-b623-d4682c2594',
             ...     'Updated Folder Name')
         '''
-        return self._put(f'{id}', json={'name': name})
+        payload = self._schema.dump(self._schema.load({'name': name}))
+        return self._put(f'{id}', json=payload)
 
     def search(self,
                **kw
