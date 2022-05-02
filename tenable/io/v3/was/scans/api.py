@@ -167,7 +167,7 @@ class ScansAPI(ExploreBaseEndpoint):
                 UUID of the scan initiated.
 
         Examples:
-            >>> folder = tio.v3.was.folders.create('New Folder Name')
+            >>> folder = tio.v3.was.scans.launch('91843ecb-ecb8-48a3-b623-d4682c2594')
         '''
         return self._post(f'configs/{config_id}/scans').get('id')
 

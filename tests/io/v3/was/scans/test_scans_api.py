@@ -191,17 +191,17 @@ def test_search(api):
     sort = [('created_at', 'desc')]
     filters = {
         'and': [{
-                'property': 'scan_id',
-                'operator': 'eq',
-                'value': ['0d94f5b4-f811-44cb-802a-7f1c600818c3',
-                          '6f1ed550-7894-40b3-a6ea-3be06f9338a4']
-                },
-                {
+            'property': 'scan_id',
+            'operator': 'eq',
+            'value': ['0d94f5b4-f811-44cb-802a-7f1c600818c3',
+                      '6f1ed550-7894-40b3-a6ea-3be06f9338a4']
+        },
+            {
                 'property': 'user_id',
                 'operator': 'eq',
                 'value': '01c924ee-e6ab-4d55-b283-dffba6dcce4c'
-                }
-                ]
+            }
+        ]
     }
 
     payload = {
@@ -272,7 +272,7 @@ def test_search(api):
                     'group_name': 'US Cloud Scanner'
                 },
                 'template_name': 'config_audit'
-        }
+            }
         ]
     }
     QP = '?limit=200&sort=name&sort=order&offset=0'
@@ -335,18 +335,18 @@ def test_search_vulnerabilities(api):
     sort = [('created_at', 'desc')]
     filters = {
         'and': [{
-                'property': 'vuln_id',
-                'operator': 'eq',
-                'value': ['a1dc9d88-44de-4f5c-9258-3dbb02baa010',
-                          '3072f8d9-a0c2-443f-bca8-b47e63ebaa80'
-                          ]
-                },
-                {
+            'property': 'vuln_id',
+            'operator': 'eq',
+            'value': ['a1dc9d88-44de-4f5c-9258-3dbb02baa010',
+                      '3072f8d9-a0c2-443f-bca8-b47e63ebaa80'
+                      ]
+        },
+            {
                 'property': 'scan_id',
                 'operator': 'eq',
                 'value': '7f3428c5-0f5a-4812-a728-fffbcbf7c132'
-                }
-                ]
+            }
+        ]
     }
 
     payload = {
@@ -412,7 +412,7 @@ def test_search_vulnerabilities(api):
                     'response': None
                 },
                 'attachments': []
-        }
+            }
         ]
     }
     URL = 'vulnerabilities/search?limit=200&sort=name&sort=order&offset=0'
